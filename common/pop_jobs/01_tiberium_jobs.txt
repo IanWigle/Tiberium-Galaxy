@@ -1,0 +1,270 @@
+j_tiberium_miner = {
+	clothes_texture_index = 2
+	swappable_data = {
+		default = {
+			condition_string = WORKER_JOB_TRIGGER
+			building_icon = building_mineral_purification_plant
+		}
+	}
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_worker_job
+	possible = {
+		hidden_trigger = {
+			exists = owner
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+	resource = {
+		category = planet_miners
+		produces = {
+			green_tiberium = 1
+			blue_tiberium = 0.25
+		}
+		upkeep = {
+			food = 2
+			alloys = 1
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 0.01
+	}
+	weight = {
+		weight = @worker_job_weight
+		mult = value:job_weights_modifier|JOB|j_tiberium_miner|RESOURCE|r_green_tiberium|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 3
+			exists = planet
+			planet = {
+				has_available_jobs = tib_harvestor
+			}
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = green_tiberium
+					value < 10
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			has_trait = trait_cyborg_creed_of_labor
+		}
+	}
+	inline_script = "jobs/automodding_priority_minerals"
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = worker
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}
+
+j_tiberium_miner_drone = {
+	category = simple_drone
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			building_icon = building_mineral_purification_plant
+		}
+	}
+	#clothes_texture_index = 2
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_drone_job
+	possible = {
+		hidden_trigger = {
+			exists = owner
+		}
+		owner = {
+			is_gestalt = yes
+		}
+	}
+	resources = {
+		category = planet_miners
+		produces = {
+			green_tiberium = 1
+			blue_tiberium = 0.25
+		}
+		upkeep = {
+			food = 2
+			alloys = 1
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 0.1
+	}
+	weight = {
+		weight = @worker_job_weight
+		mult = value:job_weights_modifier|JOB|j_green_tiberium_drone|RESOURCE|green_tiberium|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 3
+			exists = planet
+			planet = {
+				has_available_jobs = tib_harvestor
+			}
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = green_tiberium
+					value < 10
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			has_trait = trait_cyborg_creed_of_labor
+		}
+	}
+	inline_script = "jobs/automodding_priority_minerals"
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = worker
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}
+
+j_tiberium_refiner = {
+	category = specialist
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_gas_extractors
+		}
+	}
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		hidden_trigger = {
+			exists = owner
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+	resources = {}
+	weight = {}
+	promotion = { 
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = specialist
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}
+
+j_tiberium_refiner_drone = {
+	category = complex_drone
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			building_icon = building_gas_extractors
+		}
+	}
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_drone_job
+	possible = {
+		hidden_trigger = {
+			exists = owner
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+	resources = {}
+	weight = {}
+	promotion = { 
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = specialist
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}

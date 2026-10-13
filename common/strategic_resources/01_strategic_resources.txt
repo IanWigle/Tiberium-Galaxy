@@ -1,0 +1,41 @@
+r_green_tiberium = {
+	category = rare
+	tradable = yes
+	market_amount = 100
+	market_price = 100
+	max = 1000
+	ai_weight = {
+		weight = 0.5
+	}
+	prerequisites = {
+		"t_mining_tiberium"
+	}
+}
+
+r_blue_tiberium = {
+	category = rare	
+	tradable = yes
+	market_amount = 100
+	market_price = 100
+	max = 1000
+	ai_weight = {
+		weight = 0.5
+	}
+	prerequisites = {
+		"t_mining_tiberium"
+	}
+}
+
+r_liquid_tiberium = {
+	category = rare
+	tradable = no
+	market_amount = 100
+	market_price = 100
+	max = 1000
+	ai_weight = {
+		weight = 0.5
+	}
+	prerequisites = {
+		"t_liquid_tiberium"
+	}
+}

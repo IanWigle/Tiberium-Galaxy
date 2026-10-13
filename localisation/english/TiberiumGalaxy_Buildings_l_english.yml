@@ -1,0 +1,19 @@
+﻿l_english:
+
+b_tiberium_storage_facility:0 "Tiberium Storage Facility"
+b_tiberium_storage_facility_desc:0 "A facility designed to store Tiberium safely and efficiently, preventing contamination and maximizing storage capacity."
+
+b_tiberium_storage_facility_2:0 "Advanced Tiberium Storage Facility"
+b_tiberium_storage_facility_2_desc:0 "An upgraded version of the Tiberium Storage Facility, offering even greater storage capacity and improved safety measures."
+
+b_tiberium_mine:0 "Tiberium Harvester"
+b_tiberium_mine_desc:0 "A building dedicated to extracting Tiberium from the planet's surface."
+
+b_tiberium_mine_2:0 "Advanced Tiberium Harvester"
+b_tiberium_mine_2_desc:0 "An upgraded version of the Tiberium Harvester, featuring more advanced extraction techniques and increased output."
+
+b_tiberium_refinery:0 "Tiberium Refinery"
+b_tiberium_refinery_desc:0 "A facility for processing raw Tiberium into a more usable form."
+
+b_tiberium_refinery_2:0 "Advanced Tiberium Refinery"
+b_tiberium_refinery_2_desc:0 "An upgraded version of the Tiberium Refinery, capable of processing larger quantities of Tiberium with improved efficiency."

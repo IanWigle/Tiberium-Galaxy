@@ -1,0 +1,16 @@
+version="0.1"
+tags={
+	"Buildings"
+	"Events"
+	"Economy"
+	"Gameplay"
+	"Graphics"
+	"Loading Screen"
+	"Technologies"
+	"Species"
+	"Sound"
+	"Military"
+}
+name="Tiberium-Galaxy"
+picture="thumbnail.png"
+supported_version="v4.5.2"

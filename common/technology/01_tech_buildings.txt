@@ -1,0 +1,48 @@
+t_tiberium_storage_facility = {
+	cost = @tier1cost2
+	area = engineering
+	tier = 1
+	category = { industry }
+	prerequisites = { 
+		"tech_mining_1"
+		"t_mining_tiberium"
+	}
+	weight = @tier1weight2
+
+	ai_weight = {
+		factor = 1
+	}
+}
+
+t_tiberium_storage_facility_2 = {
+	cost = @tier2cost2
+	area = engineering
+	tier = 2
+	category = { industry }
+	prerequisites = { 
+		"tech_mining_3"
+		"t_mining_tiberium"
+	}
+	weight = @tier2weight2
+
+
+	ai_weight = {
+		factor = 1
+	}
+}
+
+t_tiberium_research_facility = {
+	cost = @tier2cost2
+	area = engineering
+	tier = 2
+	category = { industry }
+	prerequisites = { 
+		"tech_mining_2"
+		"t_mining_tiberium"
+	}
+	weight = @tier2weight2
+
+	ai_weight = {
+		factor = 1
+	}
+}

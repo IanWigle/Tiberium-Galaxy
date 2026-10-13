@@ -1,0 +1,10 @@
+﻿l_english:
+
+j_tiberium_miner:0 "Tiberium Miner"
+j_tiberium_miner_desc:0 "Tiberium Miners are responsible for extracting Tiberium from the planet's surface. They operate in hazardous conditions and are often equipped with specialized suits to protect them from Tiberium's toxic effects."
+j_tiberium_miner_drone:0 "Tiberium Miner Drone"
+j_tiberium_miner_drone_desc:0 "Tiberium Miner Drones are autonomous units designed to extract Tiberium efficiently. They can operate in environments too dangerous for organic workers, ensuring a steady supply of this valuable resource."
+j_tiberium_refiner:0 "Tiberium Refiner"
+j_tiberium_refiner_desc:0 "Tiberium Refiners are responsible for processing raw Tiberium into more useful forms. They work in specialized facilities and require a high level of skill and training."
+j_tiberium_refiner_drone:0 "Tiberium Refiner Drone"
+j_tiberium_refiner_drone_desc:0 "Tiberium Refiner Drones are automated units that process Tiberium into refined materials. They are designed to operate in hazardous conditions and can work continuously without fatigue."

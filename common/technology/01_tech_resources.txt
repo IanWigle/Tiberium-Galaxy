@@ -1,0 +1,151 @@
+t_mining_tiberium = {
+	cost = @tier2cost1
+	weight = @tier2weight1
+	area = engineering
+	tier = 2
+	category = { materials }
+	levels = 1
+	weight = 0
+	gateway = engineering
+	start_tech = no
+	is_rare = yes
+	potential = {
+		has_country_flag = discovered_tiberium
+	}
+}
+
+t_tiberium_refining = {
+	cost = @tier2cost3
+	weight = @tier2weight3
+	area = engineering
+	tier = 2
+	category = { industry }
+	levels = 1
+	weight = 0
+	gateway = engineering
+	start_tech = no
+	is_rare = yes
+	prerequisites = { 
+		"t_mining_tiberium"
+		"tech_mineral_purification_1"
+		"tech_engineering_2"
+		"tech_advanced_metallurgy_1"
+	}
+	weight_modifier = {
+		modifier = {
+			add = 2
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		} # Is materialist
+		modifier = {
+			add = -2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		} # Is spiritualist
+		modifier = {
+			add = 2
+			has_civic = relentless_industrialists
+		} # Has the Relentless Industrialists civic
+		modifier = {
+			add = -2
+			has_civic = civic_environmentalist
+		} # Has the Environmentalist civic
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_industry_expert"
+				has_level > 2
+			}
+		} # Science leader has the Industry Expert trait level 2
+		modifier = {
+			factor = 1.5
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_industry_expert"
+				has_level > 3
+			}
+		} # Science leader has the Industry Expert trait level 3
+		modifier = {
+			factor = 2
+			has_country_flag = exploit_tiberium
+		} # Country has made the choice to exploit and use Tiberium
+		modifier = {
+			factor = 0
+			has_country_flag = avoid_tiberium
+		} # Country has made the choice to avoid and not use Tiberium
+	}
+}
+
+t_liquid_tiberium = {
+	cost = @tier4cost1
+	weight = @tier4weight1
+	area = engineering
+	tier = 2
+	category = { industry }
+	levels = 1
+	weight = 0
+	gateway = engineering
+	start_tech = no
+	is_dangerous = yes
+	prerequisites = { 
+		"t_tiberium_refining"
+		"tech_engineering_3"
+		"tech_advanced_metallurgy_2"		
+	}
+	weight_modifier = {
+		modifier = {
+			add = 2
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		} # Is materialist
+		modifier = {
+			add = -2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		} # Is spiritualist
+		modifier = {
+			add = 2
+			has_civic = relentless_industrialists
+		} # Has the Relentless Industrialists civic
+		modifier = {
+			add = -2
+			OR = {
+				has_civic = civic_environmentalist
+				has_civic = civic_idyllic_bloom
+			}
+		} # Has the Environmentalist or Idyllic Bloom civic
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_industry_expert"
+				has_level > 2
+			}
+		} # Science leader has the Industry Expert trait level 2
+		modifier = {
+			factor = 1.5
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_industry_expert"
+				has_level > 3
+			}
+		} # Science leader has the Industry Expert trait level 3
+		modifier = {
+			factor = 2
+			has_country_flag = exploit_tiberium
+		} # Country has made the choice to exploit and use Tiberium
+		modifier = {
+			factor = 0
+			has_country_flag = avoid_tiberium
+		} # Country has made the choice to avoid and not use Tiberium
+	}
+}

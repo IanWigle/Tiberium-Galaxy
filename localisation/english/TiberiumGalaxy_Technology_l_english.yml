@@ -1,0 +1,19 @@
+﻿l_english:
+
+t_mining_tiberium: "Tiberium Mining"
+t_mining_tiberium_desc: "Tiberium is a highly valuable resource that can be harvested from certain planets. It is used in advanced technologies and can be sold for a high price on the galactic market. However, Tiberium is also highly toxic and can have detrimental effects on the environment and the health of those who come into contact with it. Mining Tiberium requires specialized equipment and safety protocols to minimize the risks associated with its extraction."
+
+t_tiberium_refining: "Tiberium Refining"
+t_tiberium_refining_desc: "Refining Tiberium is a complex process that involves separating the valuable components from the toxic elements. This process requires advanced technology and skilled personnel to ensure that the refining is done safely and efficiently. The refined Tiberium can be used in various applications, including energy production, weaponry, and advanced materials. However, the refining process also generates hazardous waste that must be carefully managed to prevent environmental contamination."
+
+t_liquid_tiberium: "Liquid Tiberium"
+t_liquid_tiberium_desc: "Liquid Tiberium is a highly volatile and dangerous form of Tiberium that can be used as a powerful energy source. It is highly sought after for its potential applications in advanced technologies and weaponry. However, handling Liquid Tiberium requires extreme caution, as it can cause severe burns and other injuries upon contact. Specialized containment and transport systems are necessary to safely manage Liquid Tiberium, and strict safety protocols must be followed to prevent accidents and environmental damage."
+
+t_tiberium_storage_facility: "Tiberium Storage Facility"
+t_tiberium_storage_facility_desc: "The Tiberium Storage Facility is a critical aspect of Tiberium mining and refining operations. Proper storage facilities are necessary to safely contain Tiberium and prevent contamination or accidental exposure. These facilities must be designed to withstand the corrosive and toxic nature of Tiberium, and they must be equipped with advanced safety systems to protect personnel and the environment. Effective Tiberium storage is essential for maintaining the integrity of the resource and ensuring the safety of those who work with it."
+
+t_tiberium_storage_facility_2: "Advanced Tiberium Storage Facility"
+t_tiberium_storage_facility_2_desc: "The Advanced Tiberium Storage Facility represents the next level of Tiberium storage technology. It incorporates state-of-the-art materials and engineering to provide even greater protection against the hazards of Tiberium. These facilities are designed to maximize storage capacity while minimizing the risk of leaks or contamination. Advanced monitoring and safety systems are integrated into the facility to ensure that any potential issues are detected and addressed promptly, safeguarding both personnel and the environment."
+
+t_tiberium_research_facility: "Tiberium Research Facility"
+t_tiberium_research_facility_desc: "The Tiberium Research Facility is dedicated to the study and analysis of Tiberium. Scientists and researchers work in these facilities to understand the properties of Tiberium, its potential applications, and the risks associated with its use. Research conducted in these facilities can lead to advancements in Tiberium extraction, refining, and storage technologies, as well as the development of new materials and energy sources derived from Tiberium. The research facility is a hub of innovation and discovery, contributing to the safe and effective utilization of this powerful resource."

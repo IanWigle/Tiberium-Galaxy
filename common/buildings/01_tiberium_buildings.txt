@@ -1,0 +1,164 @@
+b_tiberium_storage_facility = {
+	base_buildtime = 360
+	category = resource
+	cost = {
+		minerals = 500
+	}
+	prerequisites = { tech_tiberium_storage_facility }
+	upgrades = { b_tiberium_storage_facility_2 }
+	building_sets = {
+		industrial
+		foundry
+		urban
+	}
+	planet_modifier = {
+		country_resource_max = {
+			r_green_tiberium = 500
+			r_blue_tiberium = 500
+		}
+	}
+}
+
+b_tiberium_storage_facility_2 = {
+	base_buildtime = 480
+	cost = {
+		minerals = 1000
+	}
+	prerequisites = { tech_tiberium_storage_facility_2 }
+	building_sets = {
+		industrial
+		foundry
+		urban
+	}
+	planet_modifier = {
+		country_resource_max = {
+			r_green_tiberium = 1000
+			r_blue_tiberium = 1000
+		}
+	}
+}
+
+b_tiberium_mine = {
+	base_buildtime = 360
+	category = resource
+	cost = {
+		minerals = 500
+	}
+	upgrades = { b_tiberium_mine_2 }
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_j_tiberium_miner_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_j_tiberium_miner_drone_add = 1
+	}
+	prerequisites = { t_mining_tiberium }
+	building_sets = {
+		urban
+		mining
+	}
+}
+
+b_tiberium_mine_2 = {
+	base_buildtime = 480
+	category = resource
+	cost = {
+		minerals = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_j_tiberium_miner_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_j_tiberium_miner_drone_add = 2
+	}
+	prerequisites = { t_tiberium_refining }
+	building_sets = {
+		urban
+		mining
+	}
+}
+
+b_tiberium_refinery = {
+	base_buildtime = 360
+	category = manufacturing
+	cost = {
+		minerals = 500
+	}
+	upgrades = { b_tiberium_refinery_2 }
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_j_tiberium_refiner_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_j_tiberium_refiner_drone_add = 1
+	}
+	prerequisites = { t_tiberium_refining }
+	building_sets = {
+		urban
+		industrial
+		foundry
+		
+	}
+}
+
+b_tiberium_refinery_2 = {
+	base_buildtime = 480
+	category = manufacturing
+	cost = {
+		minerals = 1000
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_j_tiberium_refiner_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_j_tiberium_refiner_drone_add = 2
+	}
+	prerequisites = { t_liquid_tiberium }
+}
