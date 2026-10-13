@@ -1,0 +1,14 @@
+spriteType = {
+	name = "GFX_r_green_tiberium"
+	texturefile "gfx/interface/icons/resources/r_green_tiberium.dds"
+}
+
+spriteType = {
+	name = "GFX_r_blue_tiberium"
+	texturefile "gfx/interface/icons/resources/r_blue_tiberium.dds"
+}
+
+spriteType = {
+	name = "GFX_r_liquid_tiberium"
+	texturefile "gfx/interface/icons/resources/r_liquid_tiberium.dds"
+}

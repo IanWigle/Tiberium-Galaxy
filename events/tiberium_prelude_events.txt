@@ -1,0 +1,414 @@
+namespace = tiberium_prelude_events
+
+# Iterate through every country that is not a pre-ftl or special empire. Each empire has a 40% chance for a tiberium asteroid to spawn.
+event = {
+	id = tiberium_prelude_events.0
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = {
+				NOT = {
+					has_country_flag = has_tiberium
+					#is_country_type
+				}
+				NAND = {
+					has_country_flag = stone_age
+					has_country_flag = bronze_age
+					has_country_flag = iron_age
+					has_country_flag = late_medieval_age
+					has_country_flag = renaissance_age
+					has_country_flag = steam_age
+					has_country_flag = industrial_age
+					has_country_flag = machine_age
+					has_country_flag = atomic_age
+					has_country_flag = early_space_age
+				}
+				NOR = {
+					has_event_chain = discovering_tiberium_chain
+					has_event_chain = tiberium_asteroid_sighted_chain
+				}
+				is_pirate = no
+			}
+			random_list = {
+				40 = {
+					random_planet_within_border = {
+						limit = {
+							pop_amount > 0
+							NOR = {
+								is_planet_class = pc_tiberium_infected
+								is_planet_class = pc_heavily_tiberium_infected
+								is_planet_class = pc_habitat
+								is_planet_class = pc_ringworld_habitable
+								is_planet_class = pc_shattered_ring_habitable
+								is_planet_class = pc_relic
+							}
+							NOR = {
+								has_planet_flag = pre_ftl_default
+								has_planet_flag = pre_ftl_hive_mind
+								has_planet_flag = pre_ftl_life_seeded
+								has_planet_flag = pre_ftl_mechanists
+								has_planet_flag = pre_ftl_ocean_paradise
+								has_planet_flag = pre_ftl_shattered_ring
+								has_planet_flag = pre_ftl_subterranean
+								has_planet_flag = pre_ftl_void_dwellers
+								has_planet_flag = pre_ftls_nuked_themselves
+							}
+							is_capital = no
+						}
+						planet_event = {
+							id = tiberium_prelude_events.1
+						}
+					}
+				}
+				60 = {}
+			}			
+		}
+	}
+}
+
+# Spawn Tiberium asteroid with custom faction, aim asteroid at colony.
+planet_event = {
+	id = tiberium_prelude_events.1
+	title = "tiberium_prelude_events.1.title"
+	desc = "tiberium_prelude_events.1.desc"
+	picture = "GFX_evt_asteroid_approaching_planet"
+	show_sound = "event_air_raid_siren"
+	location = ROOT
+	is_triggered_only = yes
+	trigger = {
+		pop_amount > 0
+		exists = owner
+	}
+	immediate = {
+		owner = {
+			set_country_flag = tiberium_asteroid_sighted_country
+		}
+		set_planet_flag = tiberium_asteroid_sighted
+		create_country = {
+			name = "NAME_Incoming_Asteroid"
+			type = faction
+			auto_delete = no
+			flag = {
+				icon = {
+					category = "zoological"
+					file = "flag_zoological_1.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "new_dawn.dds"
+				}
+				colors = {
+					"black"
+					"black"
+					"null"
+					"null"
+				}
+			}
+			effect = {
+				establish_communications_no_message = root.owner
+			}
+		}
+		last_created_country = {
+			set_country_flag = incoming_tib_asteroid
+			create_fleet = {
+			name = "NAME_Asteroid"
+			effect = {
+				set_aggro_range = 0
+				set_fleet_stance = passive
+				set_aggro_range_measure_from = self
+				set_owner = prev
+				set_fleet_flag = tib_asteroid_fleet
+				save_event_target_as = tiberium_asteroid_fleet_target
+				create_ship = {
+					name = "NAME_Asteroid"
+					design = "NAME_Asteroid"
+				}
+				set_location = {
+					target = ROOT
+					distance = 60
+					angle = random
+				}
+				queue_actions = {
+					move_to = ROOT
+					effect = {
+						id = "tiberium_prelude_events.1.effect.1"
+						ROOT = {
+							planet_event = {
+								id = tiberium_prelude_events.2
+							}
+						}
+					}
+				}
+			}
+			}
+			set_relation_flag = {
+				who = root.owner
+				flag = tib_asteroid_enemy
+			}
+		}
+	}
+
+	# Non-Machine Intelligence response
+	option = {
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+		name = "tiberium_prelude_events.1.a"
+		begin_event_chain = {
+			event_chain = "tiberium_asteroid_sighted_chain"
+			target = root.owner
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	# Machine Intelligence response
+	option = {
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+		name = "tiberium_prelude_events.1.b"
+		begin_event_chain = {
+			event_chain = "tiberium_asteroid_sighted_chain"
+			target = root.owner
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+# Asteroid is destroyed, spawning crystal field on planet from asteroid debris. 
+planet_event = {
+	id = tiberium_prelude_events.2
+	title = "tiberium_prelude_events.2.title"
+	desc = {
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+		text = tiberium_prelude_events.2.desc
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+		text = tiberium_prelude_events.2.desc.mach
+	}
+	picture = GFX_evt_atmospheric_entry
+	show_sound = event_ship_explosion
+	location = ROOT
+	is_triggered_only = yes
+	immediate = {
+		fromfrom = {
+			remove_relation_flag = {
+				who = root.owner
+				flag = tib_asteroid_enemy
+			}
+			destroy_country = yes
+		}
+		remove_planet_flag = tiberium_asteroid_sighted
+		owner = {
+			add_event_chain_counter = {
+				event_chain = "tiberium_asteroid_sighted_chain"
+				counter = "asteroid_destroyed"
+				amount = 1
+			}
+		}
+		planet_event = {
+			# TODO infestation events called here.
+		}
+	}
+
+	option = {
+		name = tiberium_prelude_events.2.a.name
+		owner = {
+			end_event_chain = "tiberium_asteroid_sighted_chain"
+			begin_event_chain = {
+				event_chain = discovering_tiberium_chain
+			}
+			enable_special_project = {
+				name = TIBERIUM_INVESTIGATE_CRYSTALS
+				location = root
+				owner = root
+			}
+		}		
+	}
+}
+
+# Asteroid impacts planet, kills a number of pops based on colony size, and spawns crystal frields.
+planet_event = {
+	id = tiberium_prelude_events.3
+	title = "tiberium_prelude_events.3.name"
+	desc = {
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+		text = tiberium_prelude_events.3.desc
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+		text = tiberium_prelude_events.3.desc.mach
+	}
+	picture = GFX_evt_nuclear_explosion
+	show_sound = event_super_explosion
+	location = ROOT
+	is_triggered_only = yes
+	immediate = {
+		owner = {
+			country_event = {
+				id = tiberium_prelude_events.4
+				days = 1
+			}
+		}
+		planet_event = {
+			# TODO add infestation event here
+		}
+		remove_planet_flag = tiberium_asteroid_sighted
+		set_planet_flag = tiberium_asteroid_collision
+		add_deposit = d_crater
+		owner = {
+			end_event_chain = "tiberium_asteroid_sighted_chain"
+		}
+		every_owned_pop_group = {
+			kill_all_pop = yes
+		}
+	}
+	option = {
+		name = tiberium_prelude_events.3.a
+		if = {
+			limit = {
+				pop_amount = 1
+			}
+			add_planet_devastation = 5
+		}
+		else_if = {
+			limit = {
+				pop_amount = 2 
+			}
+			random_owned_pop_group = { kill_all_pop = yes }
+		}
+		else_if = {
+			limit = {
+				pop_amount > 2
+				pop_amount < 6
+			}
+			random_owned_pop_group = { kill_all_pop = yes }
+			random_owned_pop_group = { kill_all_pop = yes }
+		}
+		else_if = {
+			limit = {
+				pop_amount > 6
+			}
+			random_owned_pop_group = { kill_all_pop = yes }
+			random_owned_pop_group = { kill_all_pop = yes }
+			random_owned_pop_group = { kill_all_pop = yes }
+			random_owned_pop_group = { kill_all_pop = yes }
+		}
+		begin_event_chain = {
+			event_chain = discovering_tiberium_chain
+		}
+		enable_special_project = {
+			name = TIBERIUM_INVESTIGATE_CRYSTALS
+			location = prev
+			owner = this
+		}
+	}
+}
+
+# Internal event to destroy the asteroid fleet and country when asteroid completes fleet actions.
+country_event = {
+	id = tiberium_prelude_events.4
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				has_relation_flag = {
+					who = root
+					flag = tib_asteroid_enemy
+				}
+			}
+			every_controlled_ship = {
+				fleet = {
+					destroy_fleet = this
+				}
+			}
+			destroy_country = yes
+		}
+	}
+}
+
+# Internal event to handle destroyed asteroid and country.
+country_event = {
+	id = tiberium_prelude_events.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = from
+		from = {
+			has_country_flag = incoming_tib_asteroid
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = tiberium_asteroid_sighted_country
+				from = {
+					has_relation_flag = {
+						who = root
+						flag = tib_asteroid_enemy
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = tiberium_asteroid_sighted
+				}
+				planet_event = {
+					id = tiberium_prelude_events.2
+				}
+			}
+		}
+		else = {
+			random_country = {
+				limit = {
+					reverse_has_relation_flag = {
+						who = from
+						flag = tib_asteroid_enemy
+					}
+					has_country_flag = tiberium_asteroid_sighted_country
+				}
+				random_owned_planet = {
+					limit = {
+						has_planet_flag = tiberium_asteroid_sighted
+					}
+					planet_event = {
+						id = tiberium_prelude_events.2
+					}
+				}
+			}
+		}
+	}
+}

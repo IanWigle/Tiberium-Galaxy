@@ -1,0 +1,5 @@
+on_five_year_pulse = {
+	events = {
+		tiberium_prelude_events.0
+	}
+}

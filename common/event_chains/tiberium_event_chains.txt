@@ -1,0 +1,33 @@
+tiberium_asteroid_sighted_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	picture = GFX_evt_asteroid_approaching_planet
+	counter = {
+		asteroid_destroyed = {
+			max = 1
+		}
+	}
+}
+
+discovering_tiberium_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+	picture = GFX_evt_asteroid_approaching_planet
+}
+
+tiberium_lore_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_modification.dds"
+	picture = GFX_evt_analyzing_artifacts
+	counter = {
+		basic_tiberium_codex_pages = {
+			max = 1
+		}
+		#intermediate_tiberium_codex_pages = {
+		#	max = 1
+		#}
+		#tiberium_uses = {
+		#	max = 1
+		#}
+		#advanced_tiberium_codex_pages = {
+		#	max = 5
+		#}
+	}
+}

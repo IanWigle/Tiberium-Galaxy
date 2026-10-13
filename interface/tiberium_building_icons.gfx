@@ -1,0 +1,29 @@
+spriteType = {
+	name = "GFX_b_tiberium_storage_facility"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_storage_facility.dds"
+}
+
+spriteType = {
+	name = "GFX_b_tiberium_storage_facility_2"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_storage_facility_2.dds"
+}
+
+spriteType = {
+	name = "GFX_b_tiberium_mine"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_mine.dds"
+}
+
+spriteType = {
+	name = "GFX_b_tiberium_mine_2"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_mine_2.dds"
+}
+
+spriteType = {
+	name = "GFX_b_tiberium_refinery"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_refinery.dds"
+}
+
+spriteType = {
+	name = "GFX_b_tiberium_refinery_2"
+	texturefile = "gfx/interface/icons/buildings/b_tiberium_refinery_2.dds"
+}

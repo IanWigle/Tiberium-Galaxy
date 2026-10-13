@@ -1,0 +1,20 @@
+# Investigate Crystals - Available after asteroid
+special_project = {
+	key = "TIBERIUM_INVESTIGATE_CRYSTALS"
+	cost = 0
+	days_to_research = 180
+	tech_department = engineering_technology
+	sound = no
+	event_chain = discovering_tiberium_chain
+	location = yes
+	event_scope = planet_event
+
+	on_success = {
+		from = {
+			country_event = {
+				id = tiberium_lore_events.1
+			}
+			set_country_flag = discovered_tiberium
+		}
+	}
+}

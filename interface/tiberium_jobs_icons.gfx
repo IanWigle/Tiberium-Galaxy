@@ -1,0 +1,9 @@
+spriteType = {
+	name = "j_tiberium_miner"
+	texturefile = "gfx/interface/icons/jobs/j_tiberium_miner.dds"
+}
+
+spriteType = {
+	name = "j_tiberium_refiner"
+	texturefile = "gfx/interface/icons/jobs/j_tiberium_refiner.dds"
+}
